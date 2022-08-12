@@ -14,7 +14,7 @@ const register = async(req,res) => {
     //     throw new BadRequestError('Please provide name, email and password')
     // }
 
-    const user = await User.create({ ...req.body })
+    const user = await User.create(tempUser)
     res.status(StatusCodes.CREATED).json({user})
 }
 
