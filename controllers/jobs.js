@@ -1,7 +1,6 @@
-const { response } = require("express")
 
 const createJob = async(req,res) => {
-    res.send('create job')
+    res.json(req.body)
 }
 
 const getJob = async(req,res) => {
