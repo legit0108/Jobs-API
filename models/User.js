@@ -23,15 +23,15 @@ const UserSchema = new mongoose.Schema({
   },
 
   password: {
-    type: String,
-    required: [true, 'Please provide password'],
-    minLength: 6,
+   type: String,
+   required: [true, 'Please provide password'],
+   minLength: 6,
   }
 })
 
-// this functions differently for different environments
-// here for normal function it points to the document
-// no need of specifying next middleware in pre save hook
+/* this functions differently for different environments
+here for normal function it points to the document
+no need of specifying next middleware in pre save hook */
 
 UserSchema.pre('save',async function(){
   const salt = await bcrypt.genSalt(10)

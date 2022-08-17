@@ -5,6 +5,7 @@ const {BadRequestError, NotFoundError} = require('../errors')
 const createJob = async(req,res) => {
     req.body.createdBy = req.user.userId
     const job = await Job.create(req.body)
+
     res.status(StatusCodes.CREATED).json({job})
 }
 
@@ -46,7 +47,6 @@ const deleteJob = async(req,res) => {
         _id:jobId,
         createdBy:userId
     })
-     
     if(!job) throw new NotFoundError(`No job with id ${jobId}`)
     
     res.status(StatusCodes.OK).json(`Job with id ${jobId} deleted`)
